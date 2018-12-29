@@ -7,11 +7,17 @@ img_arr.forEach(function (element) {
 })
 
 function loadImg(array) {
+	// for each object in the intersection array
 	array.forEach(obj=>{
+		// if the object is visible
 		if(obj.isIntersecting){
+			// the target element
 			var target = obj.target;
+			// the src url of the image
 			var src = target.getAttribute("lazy-load-src");
+			// update the src of the image (loads the image)
 			target.src = src;
+			// unobserve the image since it is now loaded
 			observer.unobserve(target);
 		}
 	})
